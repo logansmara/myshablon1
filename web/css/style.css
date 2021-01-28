@@ -1,0 +1,46 @@
+.style1 {
+    color: green;
+}
+.style2 {
+	width: 300px;
+	height: 200px;
+	background: url(/fonts/aeroplan.jpg);
+	padding: 10px;
+}
+.cartplus1, .cartminus1 {
+	border: 1px solid #999;
+	color: #fff;
+	padding: 0 3px;
+	display: inline-block;
+	margin: 2px;
+}
+.cartplus1 {
+    background-color: #25c03e;
+}
+.cartminus1 {
+    background-color: #999;
+}
+.cartplus1:hover {
+    background-color: #299b3c;
+}
+.cartminus1:hover {
+    background-color: #777;
+}
+/* Кнопка согласие */
+.footer-soglasye {
+    border: 1px solid grey;
+    position: fixed;
+    z-index: 9999;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: #fff;
+    padding: 10px 20px;
+}
+.footer-soglasye p {
+	width: 45%;
+	float: left;
+}
+.footer-soglasye a.sogl1 {
+    float: right;
+}

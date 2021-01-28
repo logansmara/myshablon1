@@ -1,0 +1,48 @@
+админка
+------
+Созданные CRUD-генератором файлы (например, из папки modules\admin\views\category) оборачиваем в условия
+<!-- права доступа для администратора-->
+<?php if(Yii::$app->user->identity->username == 'admin1'):?>
+...
+<?php else: ?>
+<h2>У Вас нет прав доступа к этой странице</h2>
+<?php endif; ?>
+------
+Добавляем созданные CRUD-генератором контроллеры:
+// добавляем после создания этого модуля в gii
+use yii\filters\AccessControl;
+
+в DefaultController:
+// добавляем после создания этого модуля в gii
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+в другие котроллеры добавляем в уже существующий behaviors()
+// добавляем после создания этого модуля в gii
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+--------------
+в congig/web добавляем в 'rules'
+// добавляем после создания модуля admin в gii
+                'admin' => 'admin',
+                // добавляем после создания модуля redactor в gii
+                'redactor' => 'redactor',

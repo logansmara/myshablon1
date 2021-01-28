@@ -1,0 +1,53 @@
+сначала поключаем font-awesome 4.7
+https://blog.rvalitov.ru/programming/fontawesome-na-yii2/
+---------------
+font-awesome ~4.7
+1)
+composer require bower-asset/font-awesome ~4.7
+2)
+class FontAwesomeAsset extends AssetBundle
+{
+    public $sourcePath = '@bower/font-awesome';
+    public $css = [
+        'css/font-awesome.min.css',
+    ];
+}
+3)
+class AppAsset extends AssetBundle
+{
+    ...
+ 
+    public $depends = [
+        'app\assets\FontAwesomeAsset',
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
+    ];
+}
+-----------------
+затем поключаем  font-awesome 5( и 3.2)
+https://github.com/rmrevin/yii2-fontawesome
+
+composer require "rmrevin/yii2-fontawesome:~3.2"
+
+в main.php
+rmrevin\yii\fontawesome\CdnFreeAssetBundle::register($this);
+
+иконки версия 4.7
+https://fontawesome.com/v4.7.0/
+
+иконки версия 5
+https://origin.fontawesome.com/
+---------------------------------
+Расположение CSS файлов в конце body в Yii 2
+https://lan143.ru/blog/records/58-raspolozenie-css-fajlov-v-konce-body-v-yii-2
+composer require --prefer-dist lan143/yii2-advanced-view "*"
+После этого добавьте в конфиг web.php в раздел компонентов подгрузку нового компонента View:
+return [
+    'components' => [
+        'view' => [
+            'class' => 'lan143\advanced_view\View',
+        ],
+    ],
+]
+Добавляем в нужный view registerCssFile:
+$this->registerCssFile('css/style.css', [ 'position' => \yii\web\View::POS_END ]);
